@@ -110,6 +110,7 @@ namespace RPG
                     if(hero2.Health <= 0)
                     {
                         hero1.sleepTime = 0;
+                        hero1.buf = false;
                         heroes.Add(hero1);
                         logger.Winner(hero1);
                         logger.Death(hero2);
@@ -162,6 +163,7 @@ namespace RPG
                     if(hero1.Health <= 0)
                     {
                         hero2.sleepTime = 0;
+                        hero2.buf = false;
                         heroes.Add(hero2);
                         logger.Winner(hero2);
                         logger.Death(hero1);

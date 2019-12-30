@@ -35,6 +35,14 @@ namespace RPG
             {
                 Console.WriteLine($"{hero1.typeClass} {hero1.Name} использовал(-a) умение \"{skillName}\" и нанес(-ла) {hero2.typeClass} {hero2.Name} {damage} урона. {hero2.typeClass} {hero2.Name} оглушен(-а) на {hero1.sleepTime} хода.");
             }
+            else if(hero1.buf && damage == 0)
+            {
+                Console.WriteLine($"{hero1.typeClass} {hero1.Name} активировал усиление {skillName}");
+            }
+            else if(hero1.buf)
+            {
+                Console.WriteLine($"{hero1.typeClass} {hero1.Name} нанёс дополнительно 5 урона из-за усиления {hero1.bufName}.");
+            }
             else
             {
                 Console.WriteLine($"{hero1.typeClass} {hero1.Name} использовал(-a) умение \"{skillName}\" и нанес(-ла) {hero2.typeClass} {hero2.Name} {damage} урона.");
@@ -42,18 +50,17 @@ namespace RPG
 
             if(hero1.buf)
             {
-                Console.WriteLine($"{hero1.typeClass} {hero1.Name} нанёс дополнительно 5 урона из-за усиления {hero1.bufName}.");
             }
         }
 
         public void Sleep(Hero hero)
         {
-            Console.WriteLine($"{hero.typeClass} {hero.Name} оглушён и пропускает ход.");
+            Console.WriteLine($"{hero.typeClass} {hero.Name} оглушен(-а) и пропускает ход.");
         }
 
         public void Winner(Hero hero)
         {
-            Console.WriteLine($"{hero.typeClass} {hero.Name} победил!");
+            Console.WriteLine($"{hero.typeClass} {hero.Name} победил(-а)!");
         }
 
         public void Death(Hero hero)
