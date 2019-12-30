@@ -21,7 +21,7 @@ namespace RPG
             
             if(hero1.buf)
             {
-                Console.WriteLine($"{hero1.typeClass} {hero1.Name} нанёс дополнительно 5 урона из-за усиления {hero1.bufName}.");
+                Console.WriteLine($"{hero1.typeClass} {hero1.Name} нанёс дополнительно 5 урона из-за усиления \"{hero1.bufName}\".");
             }
         }
 
@@ -37,11 +37,11 @@ namespace RPG
             }
             else if(hero1.buf && damage == 0)
             {
-                Console.WriteLine($"{hero1.typeClass} {hero1.Name} активировал усиление {skillName}");
+                Console.WriteLine($"{hero1.typeClass} {hero1.Name} активировал усиление \"{skillName}\"");
             }
             else if(hero1.buf)
             {
-                Console.WriteLine($"{hero1.typeClass} {hero1.Name} нанёс дополнительно 5 урона из-за усиления {hero1.bufName}.");
+                Console.WriteLine($"{hero1.typeClass} {hero1.Name} нанёс дополнительно 5 урона из-за усиления \"{hero1.bufName}\".");
             }
             else
             {
