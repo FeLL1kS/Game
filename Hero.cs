@@ -11,9 +11,11 @@ namespace RPG
         public bool buf = false;
         public string bufName;
         public int sleepTime = 0;
+        public int maxHealth;
         public Hero()
         {
             Health = random.Next(100,200);
+            maxHealth = Health;
             Name = Names[random.Next(0,9)];
             Strength = random.Next(10,50);
         }

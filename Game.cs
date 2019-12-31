@@ -20,7 +20,7 @@ namespace RPG
                 Fight();
             }
             
-            Console.WriteLine($"Победитель в игре - {heroes[0].typeClass} {heroes[0].Name}");
+            Console.WriteLine($"\n=========\nПобедитель в игре - {heroes[0].typeClass} {heroes[0].Name}\n=========");
         }
 
         public void CreateHeroes(int numOfHeroes)
@@ -47,6 +47,43 @@ namespace RPG
             }
         }
 
+        public void Atack(Hero hero1, Hero hero2)
+        {
+            int damage;
+        
+            if(hero1.buf)
+            {
+                hero1.Atack(out damage);
+                logger.Atack(hero1, hero2, damage);
+                hero2.GetDamage(damage + 5);
+            }
+            else
+            {    
+                hero1.Atack(out damage);
+                logger.Atack(hero1, hero2, damage);
+                hero2.GetDamage(damage);
+            }
+        }
+
+        public void UseSkill(Hero hero1, Hero hero2)
+        {
+            int damage;
+            string skillName;
+            
+            if(hero1.buf)
+            {
+                hero1.Skill(out skillName, out damage);
+                logger.Skill(hero1, hero2, skillName, damage);
+                hero2.GetDamage(damage + 5);
+            }
+            else
+            {    
+                hero1.Skill(out skillName, out damage);
+                logger.Skill(hero1, hero2, skillName, damage);
+                hero2.GetDamage(damage);
+            }
+        }
+
         public void Fight()
         {
             int i = random.Next(0, heroes.Count - 1);
@@ -58,8 +95,6 @@ namespace RPG
             heroes.RemoveAt(i);
 
             int turn = random.Next(0, 1);
-            string skillName;
-            int damage;
             counter++;
             Console.WriteLine("=========");
             Console.WriteLine($"Бой №{counter}");
@@ -70,35 +105,13 @@ namespace RPG
                 {
                     if(hero2.sleepTime == 0)
                     {
-                        if(hero1.buf)
+                        if(random.Next(0,10) > 6)
                         {
-                            if(random.Next(0,10) > 6)
-                            {
-                                hero1.Skill(out skillName, out damage);
-                                hero2.GetDamage(damage + 5);
-                                logger.Skill(hero1, hero2, skillName, damage);
-                            }
-                            else
-                            {
-                                hero1.Atack(out damage);
-                                hero2.GetDamage(damage + 5);
-                                logger.Atack(hero1, hero2, damage);
-                            }
+                            UseSkill(hero1, hero2);
                         }
                         else
                         {
-                            if(random.Next(0,10) > 6)
-                            {
-                                hero1.Skill(out skillName, out damage);
-                                hero2.GetDamage(damage);
-                                logger.Skill(hero1, hero2, skillName, damage);
-                            }
-                            else
-                            {
-                                hero1.Atack(out damage);
-                                hero2.GetDamage(damage);
-                                logger.Atack(hero1, hero2, damage);
-                            }
+                            Atack(hero1, hero2);
                         }
                     }
                     else
@@ -123,35 +136,13 @@ namespace RPG
                 {
                     if(hero1.sleepTime == 0)
                     {
-                        if(hero2.buf)
+                        if(random.Next(0,10) > 6)
                         {
-                            if(random.Next(0,10) > 6)
-                            {
-                                hero2.Skill(out skillName, out damage);
-                                hero1.GetDamage(damage + 5);
-                                logger.Skill(hero2, hero1, skillName, damage);
-                            }
-                            else
-                            {
-                                hero2.Atack(out damage);
-                                hero1.GetDamage(damage + 5);
-                                logger.Atack(hero2, hero1, damage);
-                            }
+                            UseSkill(hero2, hero1);
                         }
                         else
                         {
-                            if(random.Next(0,10) > 6)
-                            {
-                                hero2.Skill(out skillName, out damage);
-                                hero1.GetDamage(damage);
-                                logger.Skill(hero2, hero1, skillName, damage);
-                            }
-                            else
-                            {
-                                hero2.Atack(out damage);
-                                hero1.GetDamage(damage);
-                                logger.Atack(hero2, hero1, damage);
-                            }
+                            Atack(hero2, hero1);
                         }
                     }
                     else

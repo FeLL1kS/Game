@@ -39,7 +39,7 @@ namespace RPG
                     break;
                 case "Раскол земли":
                     sleepTime = 3;
-                    damage = Strength * 2;
+                    damage = (int)Math.Floor(Strength * 2.5);
                     break;
                 default:
                     damage = 0;

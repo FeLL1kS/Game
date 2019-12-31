@@ -16,7 +16,7 @@ namespace RPG
         public override void Skill(out string skillName, out int damage)
         {
             int probability = random.Next(0, 100);
-            if(probability <= 60)
+            if(probability <= 60 && sleepTime == 0)
             {
                 skillName = "Заворожение";
             }
@@ -32,7 +32,7 @@ namespace RPG
                     damage = 0;
                     break;
                 case "Метеор":
-                    damage = Strength * 3;
+                    damage = (int)Math.Floor(Strength * 2.5);
                     break;
                 default:
                     damage = 0;
