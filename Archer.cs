@@ -54,6 +54,7 @@ namespace RPG
                 case "Огненные стрелы":
                     bufName = "Огненные стрелы";
                     buf = true;
+                    bufDamage = 5;
                     damage = 0;
                     break;
                 default:

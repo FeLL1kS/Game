@@ -15,7 +15,15 @@ namespace RPG
             CreateHeroes(numOfHeroes);
             while(heroes.Count > 1)
             {
-                Fight();
+                int i = random.Next(0, heroes.Count - 1);
+                Hero hero1 = heroes[i];
+                heroes.RemoveAt(i);
+
+                i = random.Next(0, heroes.Count);
+                Hero hero2 = heroes[i];
+                heroes.RemoveAt(i);
+                
+                Fight(hero1, hero2);
             }
             
             Console.WriteLine($"\n=========\nПобедитель в игре - {heroes[0].typeClass} {heroes[0].Name}\n=========");
@@ -53,7 +61,7 @@ namespace RPG
             {
                 attacking.Atack(out damage);
                 logger.Atack(attacking, attacked, damage);
-                attacked.GetDamage(damage + 5);
+                attacked.GetDamage(damage + attacking.bufDamage);
             }
             else
             {    
@@ -72,7 +80,7 @@ namespace RPG
             {
                 attacking.Skill(out skillName, out damage);
                 logger.Skill(attacking, attacked, skillName, damage);
-                attacked.GetDamage(damage + 5);
+                attacked.GetDamage(damage + attacking.bufDamage);
             }
             else
             {    
@@ -91,16 +99,8 @@ namespace RPG
             logger.Death(loser);
         }
 
-        public void Fight()
+        public void Fight(Hero hero1, Hero hero2)
         {
-            int i = random.Next(0, heroes.Count - 1);
-            Hero hero1 = heroes[i];
-            heroes.RemoveAt(i);
-
-            i = random.Next(0, heroes.Count);
-            Hero hero2 = heroes[i];
-            heroes.RemoveAt(i);
-
             int turn = random.Next(0, 1);
             counter++;
             Console.WriteLine("=========");

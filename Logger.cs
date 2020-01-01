@@ -21,7 +21,7 @@ namespace RPG
             
             if(hero1.buf)
             {
-                Console.WriteLine($" Дополнительный урон 5 единиц из-за усиления \"{hero1.bufName}\".");
+                Console.WriteLine($" Дополнительный урон {hero1.bufDamage} единиц из-за усиления \"{hero1.bufName}\".");
             }
             else
             {
@@ -49,7 +49,7 @@ namespace RPG
                 
                 if(hero1.buf)
                 {
-                    Console.WriteLine($" Дополнительный урон 5 единиц из-за усиления \"{hero1.bufName}\".");
+                    Console.WriteLine($" Дополнительный урон {hero1.bufDamage} единиц из-за усиления \"{hero1.bufName}\".");
                 }
                 else
                 {

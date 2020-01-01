@@ -10,7 +10,7 @@ namespace RPG
         : base()
         {
             typeClass = "Маг";
-            skills = new string[]{"Заворожение","Метеор"};
+            skills = new string[]{"Заворожение", "Метеор", "Столб огня"};
         }
 
         public override void Atack(out int damage)
@@ -21,9 +21,13 @@ namespace RPG
         public override void Skill(out string skillName, out int damage)
         {
             int probability = random.Next(0, 100);
-            if(probability <= 60 && sleepTime == 0)
+            if(probability <= 40 && sleepTime == 0)
             {
                 skillName = "Заворожение";
+            }
+            else if(probability <= 80)
+            {
+                skillName = "Столб огня";
             }
             else
             {
@@ -38,6 +42,9 @@ namespace RPG
                     break;
                 case "Метеор":
                     damage = (int)Math.Floor(Strength * 2.5);
+                    break;
+                case "Столб огня":
+                    damage = (int)Math.Floor(Strength * 1.8);
                     break;
                 default:
                     damage = 0;

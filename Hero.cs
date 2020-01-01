@@ -10,6 +10,7 @@ namespace RPG
         public string skillName;
         public bool buf = false;
         public string bufName;
+        public int bufDamage;
         public int sleepTime = 0;
         public int maxHealth;
         public Hero()
