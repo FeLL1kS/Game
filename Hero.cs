@@ -13,6 +13,7 @@ namespace RPG
         public int bufDamage;
         public int sleepTime = 0;
         public int maxHealth;
+        
         public Hero()
         {
             Health = random.Next(100,200);
