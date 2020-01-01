@@ -16,11 +16,11 @@ namespace RPG
         {
             Health = random.Next(100,200);
             maxHealth = Health;
-            Name = Names[random.Next(0,9)];
+            Name = Names[random.Next(0,20)];
             Strength = random.Next(10,50);
         }
 
-        public static string[] Names = new string[10]{
+        public static string[] Names = new string[20]{
             "Kelley",
             "Winifred",
             "Michael",
@@ -30,7 +30,17 @@ namespace RPG
             "Jacob",
             "Della",
             "Nicholas",
-            "Rose"
+            "Rose",
+            "Edward",
+            "Caroline",
+            "Clyde",
+            "Tiffany",
+            "Leo",
+            "Marion",
+            "Stephen",
+            "Maryann",
+            "Virgil",
+            "Betty"
         };
         public string Name { get; protected set; }
         public int Strength { get; protected set; }
@@ -42,7 +52,7 @@ namespace RPG
             damage = 0;
         }
 
-        public void Atack(out int damage)
+        public virtual void Atack(out int damage)
         {
             damage = random.Next(1, Strength);
         }

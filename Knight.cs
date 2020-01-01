@@ -2,7 +2,7 @@
 
 namespace RPG
 {
-    class Knight : Hero
+    public class Knight : Hero
     {
         Random random = new Random();
 

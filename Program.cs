@@ -16,9 +16,8 @@ namespace RPG
             {
                 numOfHeroes += 1;
             }
-
             game.Start(numOfHeroes);
-
+            
             Console.ReadKey();
         }
     }

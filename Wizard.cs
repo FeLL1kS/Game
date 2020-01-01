@@ -2,7 +2,7 @@
 
 namespace RPG
 {
-    class Wizard : Hero
+    public class Wizard : Hero
     {
         Random random = new Random();
 
@@ -11,6 +11,11 @@ namespace RPG
         {
             typeClass = "Маг";
             skills = new string[]{"Заворожение","Метеор"};
+        }
+
+        public override void Atack(out int damage)
+        {
+            damage = random.Next(1, Strength / 2);
         }
 
         public override void Skill(out string skillName, out int damage)

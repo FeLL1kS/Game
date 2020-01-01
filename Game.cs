@@ -3,13 +3,11 @@ using System.Collections.Generic;
 
 namespace RPG
 {
-    class Game
+    public class Game
     {
         public List<Hero> heroes = new List<Hero>();
         Logger logger = new Logger();
         Random random = new Random();
-        Hero hero1;
-        Hero hero2;
         int counter = 0;
         
         public void Start(int numOfHeroes)
@@ -47,51 +45,60 @@ namespace RPG
             }
         }
 
-        public void Atack(Hero hero1, Hero hero2)
+        public void Atack(Hero attacking, Hero attacked)
         {
             int damage;
         
-            if(hero1.buf)
+            if(attacking.buf)
             {
-                hero1.Atack(out damage);
-                logger.Atack(hero1, hero2, damage);
-                hero2.GetDamage(damage + 5);
+                attacking.Atack(out damage);
+                logger.Atack(attacking, attacked, damage);
+                attacked.GetDamage(damage + 5);
             }
             else
             {    
-                hero1.Atack(out damage);
-                logger.Atack(hero1, hero2, damage);
-                hero2.GetDamage(damage);
+                attacking.Atack(out damage);
+                logger.Atack(attacking, attacked, damage);
+                attacked.GetDamage(damage);
             }
         }
 
-        public void UseSkill(Hero hero1, Hero hero2)
+        public void UseSkill(Hero attacking, Hero attacked)
         {
             int damage;
             string skillName;
             
-            if(hero1.buf)
+            if(attacking.buf)
             {
-                hero1.Skill(out skillName, out damage);
-                logger.Skill(hero1, hero2, skillName, damage);
-                hero2.GetDamage(damage + 5);
+                attacking.Skill(out skillName, out damage);
+                logger.Skill(attacking, attacked, skillName, damage);
+                attacked.GetDamage(damage + 5);
             }
             else
             {    
-                hero1.Skill(out skillName, out damage);
-                logger.Skill(hero1, hero2, skillName, damage);
-                hero2.GetDamage(damage);
+                attacking.Skill(out skillName, out damage);
+                logger.Skill(attacking, attacked, skillName, damage);
+                attacked.GetDamage(damage);
             }
+        }
+
+        public void Win(Hero winner, Hero loser)
+        {
+            winner.sleepTime = 0;
+            winner.buf = false;
+            heroes.Add(winner);
+            logger.Winner(winner);
+            logger.Death(loser);
         }
 
         public void Fight()
         {
             int i = random.Next(0, heroes.Count - 1);
-            hero1 = heroes[i];
+            Hero hero1 = heroes[i];
             heroes.RemoveAt(i);
 
             i = random.Next(0, heroes.Count);
-            hero2 = heroes[i];
+            Hero hero2 = heroes[i];
             heroes.RemoveAt(i);
 
             int turn = random.Next(0, 1);
@@ -122,11 +129,7 @@ namespace RPG
 
                     if(hero2.Health <= 0)
                     {
-                        hero1.sleepTime = 0;
-                        hero1.buf = false;
-                        heroes.Add(hero1);
-                        logger.Winner(hero1);
-                        logger.Death(hero2);
+                        Win(hero1, hero2);
                         break;
                     }
 
@@ -153,11 +156,7 @@ namespace RPG
 
                     if(hero1.Health <= 0)
                     {
-                        hero2.sleepTime = 0;
-                        hero2.buf = false;
-                        heroes.Add(hero2);
-                        logger.Winner(hero2);
-                        logger.Death(hero1);
+                        Win(hero2, hero1);
                         break;
                     }
 
