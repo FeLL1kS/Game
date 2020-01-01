@@ -105,7 +105,7 @@ namespace RPG
             counter++;
             Console.WriteLine("=========");
             Console.WriteLine($"Бой №{counter}");
-
+            logger.Announcement(hero1, hero2);
             while (true)
             {
                 if(turn == 0)

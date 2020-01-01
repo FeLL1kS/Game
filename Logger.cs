@@ -58,19 +58,24 @@ namespace RPG
             }
         }
 
+        public void Announcement(Hero hero1, Hero hero2)
+        {
+            Console.WriteLine($"\nБой между {hero1.typeClass} {hero1.Name} (Здоровье: {hero1.Health} / {hero1.maxHealth}. Cила: {hero1.Strength}.) и {hero2.typeClass} {hero2.Name} (Здоровье: {hero2.Health} / {hero2.maxHealth}. Cила: {hero2.Strength}.).\n");
+        }
+
         public void Sleep(Hero hero)
         {
             Console.WriteLine($"{hero.typeClass} {hero.Name} ({hero.Health} / {hero.maxHealth}) оглушен(-а) и пропускает ход.");
         }
 
-        public void Winner(Hero hero)
+        public void Winner(Hero winner)
         {
-            Console.WriteLine($"{hero.typeClass} {hero.Name} ({hero.Health} / {hero.maxHealth}) победил(-а)!");
+            Console.WriteLine($"{winner.typeClass} {winner.Name} ({winner.Health} / {winner.maxHealth}) победил(-а)!");
         }
 
-        public void Death(Hero hero)
+        public void Death(Hero loser)
         {
-            Console.WriteLine($"{hero.typeClass} {hero.Name} погибает");
+            Console.WriteLine($"{loser.typeClass} {loser.Name} погибает");
         }
     }
 }
