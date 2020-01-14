@@ -58,6 +58,13 @@ namespace RPG
             }
         }
 
+        public void UseItem(Hero hero, string item)
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{hero.Name} использовал {item}");
+            Console.ResetColor();
+        }
+
         public void Announcement(Hero hero1, Hero hero2)
         {
             Console.WriteLine($"\nБой между {hero1.typeClass} {hero1.Name} (Здоровье: {hero1.Health} / {hero1.maxHealth}. Cила: {hero1.Strength}.) и {hero2.typeClass} {hero2.Name} (Здоровье: {hero2.Health} / {hero2.maxHealth}. Cила: {hero2.Strength}.).\n");

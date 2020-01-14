@@ -10,24 +10,12 @@ namespace RPG
         : base()
         {
             typeClass = "Рыцарь";
-            skills = new string[]{"Удар возмездия", "Удар с размаху", "Раскол земли"};
+            skills = new string[]{"Удар возмездия", "Удар возмездия", "Удар возмездия", "Удар с размаху", "Удар с размаху", "Раскол земли"};
         }
 
         public override void Skill(out string skillName, out int damage)
         {
-            int probability = random.Next(0, 100);
-            if(probability <= 20)
-            {
-                skillName = "Удар возмездия";
-            }
-            else if(probability <= 90)
-            {
-                skillName = "Удар с размаху";
-            }
-            else
-            {
-                skillName = "Раскол земли";
-            }
+            skillName = skills[(int)Math.Floor(random.NextDouble()*skills.Length)]; // Взвешенная вероятность
 
             switch(skillName)
             {
