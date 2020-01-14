@@ -61,7 +61,7 @@ namespace RPG
         public void UseItem(Hero hero, string item)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine($"{hero.Name} использовал {item}");
+            Console.WriteLine($"{hero.typeClass} {hero.Name} использовал(-а) {item}");
             Console.ResetColor();
         }
 

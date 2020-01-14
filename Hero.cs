@@ -16,7 +16,7 @@ namespace RPG
         public string bufName;
         public int bufDamage;
         public int sleepTime = 0;
-        public int maxHealth;
+        public int maxHealth = 200;
         public static string[] Names = new string[20]{
             "Kelley",
             "Winifred",
@@ -49,7 +49,7 @@ namespace RPG
         {
             Health = random.Next(100,201);
             maxHealth = Health;
-            Name = Names[random.Next(0,21)];
+            Name = Names[random.Next(0,20)];
             Strength = random.Next(10,51);
             items.Add(Items[random.Next(0,3)]);
         }
